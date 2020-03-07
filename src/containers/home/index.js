@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
-import * as counterActions from '../../state/actions/counterActions';
+import * as counterActions from '../../store/actions/charactersActions';
 
 const Home = ({ counter, actions }) => (
 	<>
