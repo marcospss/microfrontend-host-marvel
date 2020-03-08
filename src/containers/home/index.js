@@ -12,9 +12,10 @@ import * as charactersActions from '../../store/actions/charactersActions';
 
 const Home = ({ isLoading, characters, actions }) => {
 	useEffect(() => {
-		// actions.loadList();
+		actions.loadList();
 	  }, []);
-	  const { data:{ results }} = characters;
+	  const { data:{ offset, total, results }} = characters;
+	  const showButtonLoadMore = (total > offset);
 	return (
 		<>
 			<ImageGrid data={results} />
@@ -22,12 +23,16 @@ const Home = ({ isLoading, characters, actions }) => {
 				{
 					isLoading && <LoaderAnimation />
 				}
-				<Button 
-					handleAction={actions.loadList}
-					loading={isLoading}
-				>
-					Load More
-				</Button>
+				{
+					showButtonLoadMore &&
+					<Button 
+						handleAction={actions.loadList}
+						loading={isLoading}
+					>
+						Load More
+					</Button>
+				}
+				
 			</Actions>
 		</>
 	);

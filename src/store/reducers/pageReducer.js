@@ -1,6 +1,6 @@
 import * as types from '../actions/actionTypes';
 
-const pageReducer = (state = 0, action) => {
+const pageReducer = (state = 1470, action) => {
     switch (action.type) {
         case types.LIST_CHARACTERS.LOAD_SUCCESS:
             return (state + 10);
