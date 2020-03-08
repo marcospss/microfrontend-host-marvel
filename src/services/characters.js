@@ -1,13 +1,19 @@
-import axios from '../config/instanceAxios';
-
+import { INSTANCE, PARAMS } from '../settings';
 /**
  * Fetches lists of characters
  * @param int limit 
  * @param int offset 
  */
-const fetchesListsCharacters = async (limit = 10, offset = 0) => {
+async function fetchesListsCharacters(offset = 0) {
     try {
-        return await axios.get(`/characters?limit=${limit}&offset=${offset}`);
+        const { data: { data } } = await INSTANCE.get(`/characters`, {
+            params: {
+                ...PARAMS,
+                limit: 10,
+                offset
+            }
+        });
+        return data;
     } catch(error) {
         return error;
     }
@@ -19,7 +25,12 @@ const fetchesListsCharacters = async (limit = 10, offset = 0) => {
  */
 const fetchesListsCharactersById = async characterId => {
     try {
-        return await axios.get(`/characters/${characterId}`);
+        const data = await INSTANCE.get(`/characters/${characterId}`, {
+            params: {
+                ...PARAMS,
+            }
+        });
+        return data;
     } catch(error) {
         return error;
     }

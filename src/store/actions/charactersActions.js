@@ -6,7 +6,7 @@ const loadList = () => {
 	};
 };
 
-const setList = data => {
+const setList = (data) => {
 	return {
 		type: types.LIST_CHARACTERS.LOAD_SUCCESS,
 		payload: data

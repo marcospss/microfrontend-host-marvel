@@ -8,8 +8,8 @@ const getPage = state => state.nextPage;
 
 function* handleListLoad() {
 	try {
-		const page = yield select(getPage);
-		const list = yield call(characters.fetchesListsCharacters(20, page));
+		const nextPage = yield select(getPage);
+		const list = yield call(characters.fetchesListsCharacters, nextPage);
 		yield put(charactersActions.setList(list));
 	} catch (error) {
 		yield put(charactersActions.setListError(error));

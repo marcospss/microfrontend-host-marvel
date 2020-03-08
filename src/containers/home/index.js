@@ -1,46 +1,50 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
-import * as counterActions from '../../store/actions/charactersActions';
+import ImageGrid from '../../components/ImageGrid';
+import Button from '../../components/Button';
 
-const Home = ({ counter, actions }) => (
-	<>
-		<h1>Home</h1>
-		<button type="button" onClick={() => actions.counterIncrease(1)}>
-			INCREASE
-		</button>
-		<button type="button" onClick={() => actions.counterDecrease(1)}>
-			DECREASE
-		</button>
-		<h2>{counter}</h2>
-	</>
-);
+import * as charactersActions from '../../store/actions/charactersActions';
 
-const mapStateToProps = state => {
-	return {
-		counter: state.counter.counter
-	};
+const Home = ({ isLoading, characters, actions }) => {
+	useEffect(() => {
+		actions.loadList();
+	  }, []);
+	  console.log('characters -> ', characters.data.results)
+	return (
+		<>
+			<ImageGrid data={characters.data.results} />
+			<Button 
+				handleAction={actions.loadList}
+				loading={isLoading}
+			>
+				Load More
+			</Button>
+		</>
+	);
 };
+
+const mapStateToProps = ({ callStatus, characters }) => ({
+    isLoading: callStatus > 0,
+    characters,
+});
 
 const mapDispatchToProps = dispatch => {
 	return {
 		actions: {
-			counterIncrease: bindActionCreators(
-				counterActions.counterIncrease,
+			loadList: bindActionCreators(
+				charactersActions.loadList,
 				dispatch
 			),
-			counterDecrease: bindActionCreators(
-				counterActions.counterDecrease,
-				dispatch
-			)
 		}
 	};
 };
 
 Home.propTypes = {
-	counter: PropTypes.func.isRequired,
+	isLoading: PropTypes.bool.isRequired,
+	// characters: PropTypes.object.isRequired,
 	actions: PropTypes.func.isRequired
 };
 

@@ -6,20 +6,15 @@ import rootReducer from './reducers';
 import history from '../routes/history';
 import rootSaga from './sagas';
 
-const configureStore = () => {
-	const sagaMiddleware = createSagaMiddleware();
-	const middlewares = [routerMiddleware(history), sagaMiddleware];
-    const store = createStore(
-        connectRouter(history)(rootReducer),
-        window.__REDUX_DEVTOOLS_EXTENSION__
-            ? compose(
-                  applyMiddleware(sagaMiddleware),
-                  window.__REDUX_DEVTOOLS_EXTENSION__(),
-              )
-            : applyMiddleware(...middlewares),
-    );
-    sagaMiddleware.run(rootSaga);
-    return store;
-};
+const sagaMiddleware = createSagaMiddleware();
 
-export default configureStore;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const middlewares = [routerMiddleware(history), sagaMiddleware];
+
+const store = createStore(
+	connectRouter(history)(rootReducer),
+	composeEnhancers(applyMiddleware(...middlewares))
+);
+sagaMiddleware.run(rootSaga);
+
+export default store;

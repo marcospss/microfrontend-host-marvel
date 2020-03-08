@@ -3,11 +3,16 @@ module.exports = {
     browser: true,
     es6: true
   },
-  extends: ["airbnb", "prettier", "prettier/react", "plugin:jsx-a11y/recommended"],
+  extends: [
+    "airbnb",
+    "prettier",
+    "prettier/react",
+    "plugin:jsx-a11y/recommended"
+  ],
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
-    __DEV__: 'readonly'
+    __DEV__: "readonly"
   },
   parserOptions: {
     ecmaFeatures: {
