@@ -5,23 +5,30 @@ import PropTypes from 'prop-types';
 
 import ImageGrid from '../../components/ImageGrid';
 import Button from '../../components/Button';
+import LoaderAnimation from '../../components/LoaderAnimation';
+import { Actions } from './styles';
 
 import * as charactersActions from '../../store/actions/charactersActions';
 
 const Home = ({ isLoading, characters, actions }) => {
 	useEffect(() => {
-		actions.loadList();
+		// actions.loadList();
 	  }, []);
-	  console.log('characters -> ', characters.data.results)
+	  const { data:{ results }} = characters;
 	return (
 		<>
-			<ImageGrid data={characters.data.results} />
-			<Button 
-				handleAction={actions.loadList}
-				loading={isLoading}
-			>
-				Load More
-			</Button>
+			<ImageGrid data={results} />
+			<Actions>
+				{
+					isLoading && <LoaderAnimation />
+				}
+				<Button 
+					handleAction={actions.loadList}
+					loading={isLoading}
+				>
+					Load More
+				</Button>
+			</Actions>
 		</>
 	);
 };

@@ -1,15 +1,13 @@
 import * as types from '../actions/actionTypes';
 
-const initialState = {
-	apiCallsInProgress: 0,
-};
+const initialState = 0;
 
 function actionTypeEndsInSuccess(type) {
   return type && type.toLowerCase().indexOf('success') !== -1;
 }
 
 export default function apiCallStatusReducer(
-  state = initialState.apiCallsInProgress,
+  state = initialState,
   action
 ) {
   if (action.type === types.API_CALLS_IN_PROGRESS.BEGIN_CALL) {

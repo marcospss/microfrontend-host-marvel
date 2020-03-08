@@ -9,39 +9,37 @@ export const Container = styled.div`
 `;
 
 export const Grid = styled.section`
-  max-width: 1200px;
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 2px;
-  }
-
-  .item-1 {
-    grid-row: span 1;
-  }
-
-  .item-2 {
-    grid-row: span 2;
-  }
-
-  .item-3 {
-    grid-row: span 3;
-  }
-
-  .item-4 {
-    grid-row: span 4;
-  }
-
-  .item-5 {
-    grid-row: span 5;
-  }
-
-  .item {
-    position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 25px;
+  grid-gap: 25px;
+  grid-auto-flow: dense;
+  align-items: stretch;
+  width: 100%;
+  figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    a {
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      color: #000;
+      &:hover {
+        text-decoration: underline;
+        color: #4e5f82;
+      };
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    figcaption {
+      padding: 10px;
+    }
   }
 `;
