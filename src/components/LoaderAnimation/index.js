@@ -2,10 +2,8 @@ import React from 'react';
 
 import { Loader } from './styles';
 
-function LoaderAnimation() {
-    return (
-        <Loader />
-    );
-}
+const LoaderAnimation = () => (
+    <Loader />
+);
 
 export default LoaderAnimation;
