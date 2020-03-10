@@ -22,11 +22,16 @@ export const Grid = styled.section`
     justify-content: flex-start;
     align-items: center;
     a {
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+      align-items: center;
+      color: #fefefe;
       text-decoration: none;
-      font-size: 16px;
-      font-weight: bold;
-      text-align: center;
-      color: #000;
+      border: 1px solid #fefefe;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
       &:hover {
         text-decoration: underline;
         color: #4e5f82;

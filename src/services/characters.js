@@ -4,7 +4,7 @@ import { INSTANCE, PARAMS } from '../settings';
  * @param int limit 
  * @param int offset 
  */
-async function fetchesListsCharacters(offset = 0) {
+const fetchesListsCharacters = async (offset = 0) => {
     try {
         const { data: { data } } = await INSTANCE.get(`/characters`, {
             params: {
