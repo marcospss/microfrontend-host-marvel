@@ -12,7 +12,9 @@ import * as charactersActions from '../../store/actions/charactersActions';
 
 const Home = ({ isLoading, characters, actions }) => {
 	useEffect(() => {
-		actions.loadList();
+		if(characters.isFirstLoad) {
+			actions.loadList();
+		}
 	  }, []);
 	  const { data:{ offset, total, results }} = characters;
 	  const showButtonLoadMore = (total > offset);
@@ -38,9 +40,10 @@ const Home = ({ isLoading, characters, actions }) => {
 	);
 };
 
-const mapStateToProps = ({ callStatus, characters }) => ({
+const mapStateToProps = ({ callStatus, characters, nextPage }) => ({
     isLoading: callStatus > 0,
-    characters,
+	characters,
+	nextPage,
 });
 
 const mapDispatchToProps = dispatch => {

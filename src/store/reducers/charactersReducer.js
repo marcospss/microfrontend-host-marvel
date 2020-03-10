@@ -1,6 +1,7 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
+    isFirstLoad: true,
 	data: {
         results: [],
     },
@@ -16,6 +17,7 @@ const charactersReducer = (state = initialState, action) => {
         case types.LIST_CHARACTERS.LOAD_SUCCESS:
             return {
                 ...state,
+                isFirstLoad: false,
                 data: {
                     ...action.payload,
                     results: [...state.data.results, ...action.payload.results]
