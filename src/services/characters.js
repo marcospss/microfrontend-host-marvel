@@ -23,7 +23,7 @@ const fetchesListsCharacters = async (offset = 0) => {
  * Fetches a single character by id
  * @param int characterId 
  */
-const fetchesListsCharactersById = async (characterId, offset = 0) => {
+const fetchesCharactersById = async (characterId, offset = 0) => {
     try {
         const { data: { data } } = await INSTANCE.get(`/characters/${characterId}`, {
             params: {
@@ -38,6 +38,25 @@ const fetchesListsCharactersById = async (characterId, offset = 0) => {
     }
 };
 
+/**
+ * Fetches lists of series filtered by a character id
+ * @param int characterId 
+ */
+const fetchesSeriesCharactersById = async (characterId, offset = 0) => {
+    try {
+        const { data: { data } } = await INSTANCE.get(`/characters/${characterId}/series`, {
+            params: {
+                ...PARAMS,
+                limit: 10,
+                offset,
+            }
+        });
+        return data;
+    } catch(error) {
+        return error;
+    }
+};
 
 
-export { fetchesListsCharacters, fetchesListsCharactersById };
+
+export { fetchesListsCharacters, fetchesCharactersById, fetchesSeriesCharactersById };

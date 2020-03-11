@@ -11,7 +11,7 @@ function* handleDetailsLoad() {
 	try {
 		const characterId = yield select(getCharacterId);
 		yield put(apiCallStatusActions.beginApiCall());
-		const data = yield call(characters.fetchesListsCharactersById, characterId);
+		const data = yield call(characters.fetchesCharactersById, characterId);
 		const details = data.results[0];
 		yield put(charactersActions.setDetails(details));
 	} catch (error) {

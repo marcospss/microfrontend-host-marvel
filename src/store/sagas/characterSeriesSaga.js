@@ -5,22 +5,22 @@ import * as apiCallStatusActions from '../actions/apiCallStatusActions';
 import * as charactersActions from '../actions/charactersActions';
 import { characters } from '../../services';
 
-const getPageCharacter = state => state.characters.nextPage;
+const getCharacterId = state => state.details.characterId;
 
-function* handleListLoad() {
+function* handleSeriesLoad() {
 	try {
-		const nextPage = yield select(getPageCharacter);
+		const characterId = yield select(getCharacterId);
 		yield put(apiCallStatusActions.beginApiCall());
-		const list = yield call(characters.fetchesListsCharacters, nextPage);
-		yield put(charactersActions.setList(list));
+		const series = yield call(characters.fetchesSeriesCharactersById, characterId);
+		yield put(charactersActions.setSeries(series));
 	} catch (error) {
 		yield all([
 			put(apiCallStatusActions.apiCallError()),
-			put(charactersActions.setListError(error))
+			put(charactersActions.setSeriesError(error))
 		]);
 	}
 }
 
-export function* watchCharacterListLoad() {
-	yield takeLatest(types.LIST_CHARACTERS.LOAD, handleListLoad);
+export function* watchCharacterSeriesLoad() {
+	yield takeLatest(types.SERIES_CHARACTERS.LOAD, handleSeriesLoad);
 }

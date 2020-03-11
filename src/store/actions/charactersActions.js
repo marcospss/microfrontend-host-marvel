@@ -41,6 +41,26 @@ const setDetailsError = data => {
 	};
 };
 
+const loadSeries = () => {
+	return {
+		type: types.SERIES_CHARACTERS.LOAD,
+	};
+};
+
+const setSeries = data => {
+	return {
+		type: types.SERIES_CHARACTERS.LOAD_SUCCESS,
+		payload: data,
+	};
+};
+
+const setSeriesError = data => {
+	return {
+		type: types.SERIES_CHARACTERS.LOAD_FAIL,
+		payload: data,
+	};
+};
+
 export { 
 	loadList, 
 	setList, 
@@ -48,4 +68,7 @@ export {
 	loadDetails, 
 	setDetails, 
 	setDetailsError,
+	loadSeries, 
+	setSeries, 
+	setSeriesError,
 };

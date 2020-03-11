@@ -2,6 +2,7 @@ import * as types from '../actions/actionTypes';
 
 const initialState = {
     isFirstLoad: true,
+    nextPage: 0,
 	data: {
         results: [],
     },
@@ -18,6 +19,7 @@ const charactersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFirstLoad: false,
+                nextPage: state.nextPage + 10,
                 data: {
                     ...action.payload,
                     results: [...state.data.results, ...action.payload.results]

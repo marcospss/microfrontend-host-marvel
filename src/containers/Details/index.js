@@ -4,41 +4,53 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
 import LoaderAnimation from '../../components/LoaderAnimation';
+import SeriesGrid from './components/SeriesGrid';
 
 import * as charactersActions from '../../store/actions/charactersActions';
 
-const Details = ({ match, isLoading, actions, details }) => {
+const Details = ({ match, isLoading, actions, details, series }) => {
     const { params: { characterId } } = match;
     useEffect(() => {
         actions.loadDetails(characterId);
+        actions.loadSeries(characterId);
     }, [characterId]);
 
     const {
         data: { name, description, thumbnail }
       } = details;
-
+    const { data: { results } } = series;
     return (
         <>
         {isLoading && <LoaderAnimation />}
-    <h2>{ name }</h2>
-    {
-        thumbnail &&
-        <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={name} />
-    }
-    <p>{ description }</p>
+        {
+          !isLoading &&
+          <div>
+            <h2>{ name }</h2>
+              {
+                  thumbnail &&
+                  <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={name} width="280" />
+              }
+              <p>{ description }</p>
+              {
+                results && <SeriesGrid data={results} />
+              }
+          </div>
+        }
         </>
     )
 };
 
-const mapStateToProps = ({ callStatus, details }) => ({
+const mapStateToProps = ({ callStatus, details, series }) => ({
     isLoading: callStatus > 0,
     details,
+    series,
   });
   
   const mapDispatchToProps = dispatch => {
     return {
       actions: {
         loadDetails: bindActionCreators(charactersActions.loadDetails, dispatch),
+        loadSeries: bindActionCreators(charactersActions.loadSeries, dispatch),
       }
     };
   };
@@ -50,16 +62,23 @@ const mapStateToProps = ({ callStatus, details }) => ({
     }).isRequired,
     actions: PropTypes.shape({
         loadDetails: PropTypes.func,
+        loadSeries: PropTypes.func,
     }).isRequired,
-    data: PropTypes.shape({
+    details: PropTypes.shape({
+      data: PropTypes.shape({
         name: PropTypes.string,
         description: PropTypes.string,
-        // thumbnail: PropTypes.shape({
-        //     path: PropTypes.string,
-        //     extension: PropTypes.string,
-        // }),
-        thumbnail: PropTypes.object,
-      }).isRequired,
+        thumbnail: PropTypes.shape({
+            path: PropTypes.string,
+            extension: PropTypes.string,
+        }),
+      })
+    }).isRequired,
+    series: PropTypes.shape({
+      data: PropTypes.shape({
+          results: PropTypes.array,
+        }),
+    }).isRequired,
   };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Details);
