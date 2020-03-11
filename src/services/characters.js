@@ -10,7 +10,7 @@ const fetchesListsCharacters = async (offset = 0) => {
             params: {
                 ...PARAMS,
                 limit: 10,
-                offset
+                offset,
             }
         });
         return data;
@@ -23,11 +23,13 @@ const fetchesListsCharacters = async (offset = 0) => {
  * Fetches a single character by id
  * @param int characterId 
  */
-const fetchesListsCharactersById = async characterId => {
+const fetchesListsCharactersById = async (characterId, offset = 0) => {
     try {
-        const data = await INSTANCE.get(`/characters/${characterId}`, {
+        const { data: { data } } = await INSTANCE.get(`/characters/${characterId}`, {
             params: {
                 ...PARAMS,
+                limit: 10,
+                offset,
             }
         });
         return data;
@@ -35,5 +37,7 @@ const fetchesListsCharactersById = async characterId => {
         return error;
     }
 };
+
+
 
 export { fetchesListsCharacters, fetchesListsCharactersById };

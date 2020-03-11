@@ -8,7 +8,7 @@ const ImageGrid = ({ data }) => (
   <Container>
     <Grid>
       {
-      data && data.map(content => {
+      data.map(content => {
           const {
             id,
             thumbnail: { path, extension },
@@ -27,6 +27,10 @@ const ImageGrid = ({ data }) => (
     </Grid>
   </Container>
 );
+
+ImageGrid.propTypes = {
+  data: [],
+};
 
 ImageGrid.propTypes = {
   data: PropTypes.shape({

@@ -10,19 +10,24 @@ import { Actions } from './styles';
 
 import * as charactersActions from '../../store/actions/charactersActions';
 
+const isFirstLoad = async (characters, actions) => {
+  if (characters.isFirstLoad) {
+    await actions.loadList();
+  }
+};
+
 const Home = ({ isLoading, characters, actions }) => {
+  
   useEffect(() => {
-    const isFirstLoad = async () => {
-      if (characters.isFirstLoad) {
-        await actions.loadList();
-      }
-    };
-    isFirstLoad();
+    isFirstLoad(characters, actions);
   }, []);
+
   const {
     data: { offset, total, results }
   } = characters;
+
   const showButtonLoadMore = total > offset;
+  
   return (
     <>
       <ImageGrid data={results} />

@@ -1,7 +1,11 @@
 import { all, fork } from 'redux-saga/effects';
 
-import { watchCharacterLoad } from './charactersSaga';
+import { watchCharacterListLoad } from './characterListSaga';
+import { watchCharacterDetailsLoad } from './characterDetailsSaga';
 
 export default function* rootSaga() {
-  yield all([fork(watchCharacterLoad)]);
+  yield all([
+    fork(watchCharacterListLoad),
+    fork(watchCharacterDetailsLoad),
+  ]);
 }

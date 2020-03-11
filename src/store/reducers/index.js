@@ -4,6 +4,7 @@ import { connectRouter } from 'connected-react-router';
 import history from '../../routes/history';
 import callStatus from './apiCallStatusReducer';
 import characters from './charactersReducer';
+import details from './detailsReducer';
 import pageReducer from './pageReducer';
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
 	callStatus,
 	characters,
 	nextPage: pageReducer,
+	details,
 });
 
 export default rootReducer;

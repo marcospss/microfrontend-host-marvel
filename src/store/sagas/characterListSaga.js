@@ -21,6 +21,6 @@ function* handleListLoad() {
 	}
 }
 
-export function* watchCharacterLoad() {
+export function* watchCharacterListLoad() {
 	yield takeLatest(types.LIST_CHARACTERS.LOAD, handleListLoad);
 }

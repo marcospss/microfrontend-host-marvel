@@ -8,7 +8,7 @@ import PageNotFound from '../containers/PageNotFound';
 const Routes = () => (
   <Switch>
     <Route exact path='/' component={Home} />
-    <Route path='/details/:mediaId' component={Details} />
+    <Route path='/details/:characterId' component={Details} />
     <Route component={PageNotFound} />
   </Switch>
 );

@@ -14,7 +14,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-	children: PropTypes.element.isRequired,
+	children: PropTypes.string.isRequired,
 	loading: PropTypes.bool,
 	handleAction: PropTypes.func.isRequired,
 };

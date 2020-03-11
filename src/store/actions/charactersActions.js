@@ -9,34 +9,35 @@ const loadList = () => {
 const setList = (data) => {
 	return {
 		type: types.LIST_CHARACTERS.LOAD_SUCCESS,
-		payload: data
+		payload: data,
 	};
 };
 
 const setListError = data => {
 	return {
 		type: types.LIST_CHARACTERS.LOAD_FAIL,
-		payload: data
+		payload: data,
 	};
 };
 
-const loadSingle = () => {
+const loadDetails = data => {
 	return {
-		type: types.SINGLE_CHARACTER.LOAD,
+		type: types.DETAILS_CHARACTER.LOAD,
+		payload: data,
 	};
 };
 
-const setSingle = data => {
+const setDetails = data => {
 	return {
-		type: types.SINGLE_CHARACTER.LOAD_SUCCESS,
-		payload: data
+		type: types.DETAILS_CHARACTER.LOAD_SUCCESS,
+		payload: data,
 	};
 };
 
-const setSingleError = data => {
+const setDetailsError = data => {
 	return {
-		type: types.SINGLE_CHARACTER.LOAD_FAIL,
-		payload: data
+		type: types.DETAILS_CHARACTER.LOAD_FAIL,
+		payload: data,
 	};
 };
 
@@ -44,7 +45,7 @@ export {
 	loadList, 
 	setList, 
 	setListError,
-	loadSingle, 
-	setSingle, 
-	setSingleError,
+	loadDetails, 
+	setDetails, 
+	setDetailsError,
 };

@@ -1,7 +1,12 @@
 import React from 'react';
 
+import { Container } from './styles';
+import imgPageNotFound from '../../assets/images/page-not-found.png';
+
 const PageNotFound = () => (
-    <h2>Page Not Found</h2>
+    <Container>
+        <img src={imgPageNotFound} alt="Page Not Found" />
+    </Container>
 );
 
 export default PageNotFound;

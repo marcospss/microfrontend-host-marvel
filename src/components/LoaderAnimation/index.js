@@ -1,9 +1,11 @@
 import React from 'react';
 
-import { Loader } from './styles';
+import { Container ,Loader } from './styles';
 
 const LoaderAnimation = () => (
-    <Loader />
+    <Container>
+        <Loader />
+    </Container>
 );
 
 export default LoaderAnimation;
