@@ -1,46 +1,45 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { Container, Grid } from './styles';
+import { Container, Grid, Header } from './styles';
 
 const SeriesGrid = ({ data }) => (
   <Container>
+    <Header>
+      Series
+    </Header>
     <Grid>
-      {
-      data.map(content => {
-          const {
-            id,
-            thumbnail: { path, extension },
-            title,
-          } = content;
-          const linkMedia = `/details/${id}`;
-          return (
-            <>
-                <figure key={id}>
-                <Link to={linkMedia}>
-                    <img src={`${path}.${extension}`} alt={title} />
-                    <figcaption>{title}</figcaption>
-                </Link>
-                </figure>
-            </>
-          );
-        })}
+      {data.map(content => {
+        const {
+          id,
+          thumbnail: { path, extension },
+          title
+        } = content;
+
+        return (
+          <Container>
+            <figure key={id}>
+              <img src={`${path}.${extension}`} alt={title} />
+              <figcaption>{title}</figcaption>
+            </figure>
+          </Container>
+        );
+      })}
     </Grid>
   </Container>
 );
 
 SeriesGrid.propTypes = {
-  data: [],
+  data: []
 };
 
 SeriesGrid.propTypes = {
   data: PropTypes.shape({
     map: PropTypes.func,
-		id: PropTypes.number,
-		thumbnail: PropTypes.object,
-		name: PropTypes.string,
-  }).isRequired,
+    id: PropTypes.number,
+    thumbnail: PropTypes.object,
+    name: PropTypes.string
+  }).isRequired
 };
 
 export default SeriesGrid;

@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
 import Routes from './routes';
-import Header from './components/Header';
+import Header from './shared/components/Header';
 
 // REDUX
 import store from './store';
@@ -13,7 +13,7 @@ const App = () => (
 	<Provider store={store}>
 		<ConnectedRouter history={history}>
 			<Header />
-			<main className="main-content">
+			<main>
 				<Routes />
 			</main>
 		</ConnectedRouter>

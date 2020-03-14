@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import LoaderAnimation from '../../components/LoaderAnimation';
+import LoaderAnimation from '../../shared/components/LoaderAnimation';
 import SeriesGrid from './components/SeriesGrid';
 
 import * as charactersActions from '../../store/actions/charactersActions';
+import { Container, Header } from './styles';
 
 const Details = ({ match, isLoading, actions, details, series }) => {
     const { params: { characterId } } = match;
@@ -22,20 +24,27 @@ const Details = ({ match, isLoading, actions, details, series }) => {
     return (
         <>
         {isLoading && <LoaderAnimation />}
+        <Container>
         {
           !isLoading &&
-          <div>
+          <Header>
             <h2>{ name }</h2>
               {
                   thumbnail &&
                   <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={name} width="280" />
               }
               <p>{ description }</p>
-              {
-                results && <SeriesGrid data={results} />
-              }
-          </div>
+              <p>
+                <Link to="/" className="link-action">
+                  Back Home
+                </Link>
+              </p>
+          </Header>
         }
+        </Container>
+          {
+            results && <SeriesGrid data={results} />
+          }
         </>
     )
 };

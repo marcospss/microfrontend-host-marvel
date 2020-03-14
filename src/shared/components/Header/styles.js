@@ -10,4 +10,5 @@ export const Navbar = styled.nav`
   top: 0;
   background: #000;
   z-index: 10;
+  margin: 0px;
 `;

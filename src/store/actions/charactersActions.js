@@ -12,6 +12,12 @@ const setList = (data) => {
 		payload: data,
 	};
 };
+const filterList = (data) => {
+	return {
+		type: types.LIST_CHARACTERS.FILTER,
+		payload: data,
+	};
+};
 
 const setListError = data => {
 	return {
@@ -64,6 +70,7 @@ const setSeriesError = data => {
 export { 
 	loadList, 
 	setList, 
+	filterList,
 	setListError,
 	loadDetails, 
 	setDetails, 
