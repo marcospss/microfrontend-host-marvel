@@ -35,15 +35,22 @@ const Home = ({ isLoading, characters, actions }) => {
   
   return (
     <>
-      <Search triggerSearch={filterCharacters} filter={filter}/>
-      <ImageGrid data={results} />
+      { 
+        (results && !!results.length) &&
+        <>
+        <Search triggerSearch={filterCharacters} filter={filter}/>
+        <ImageGrid data={results} />
+        </>
+      }
       <Actions>
         {isLoading && <LoaderAnimation />}
-        {showButtonLoadMore && (
-          <Button handleAction={actions.loadList} loading={isLoading}>
-            Load More
-          </Button>
-        )}
+        {
+          results && showButtonLoadMore && (
+            <Button handleAction={actions.loadList} loading={isLoading}>
+              Load More
+            </Button>
+          )
+        }
       </Actions>
     </>
   );

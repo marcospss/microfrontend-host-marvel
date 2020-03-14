@@ -25,6 +25,10 @@ const Search = ({ triggerSearch, filter }) => {
 };
 
 Search.propTypes = {
+  filter: null,
+};
+
+Search.propTypes = {
   triggerSearch: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
 };
