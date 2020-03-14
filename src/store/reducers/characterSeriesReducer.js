@@ -10,7 +10,6 @@ const seriesReducer = (state = initialState, action) => {
         case types.SERIES_CHARACTERS.LOAD:
             return {
                 ...state,
-                data: {},
             };
         case types.SERIES_CHARACTERS.LOAD_SUCCESS:
             return {
