@@ -7,7 +7,7 @@ import { characters } from '../../services';
 
 const getCharacterId = state => state.details.characterId;
 
-function* handleSeriesLoad() {
+export function* handleSeriesLoad() {
 	try {
 		const characterId = yield select(getCharacterId);
 		yield put(apiCallStatusActions.beginApiCall());
@@ -21,6 +21,6 @@ function* handleSeriesLoad() {
 	}
 }
 
-export function* watchCharacterSeriesLoad() {
+export default function * () {
 	yield takeLatest(types.SERIES_CHARACTERS.LOAD, handleSeriesLoad);
 }

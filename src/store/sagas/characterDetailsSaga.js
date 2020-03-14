@@ -1,15 +1,12 @@
-import { put, call, takeLatest, select, all } from 'redux-saga/effects';
+import { put, call, takeLatest, all } from 'redux-saga/effects';
 
 import * as types from '../actions/actionTypes';
 import * as apiCallStatusActions from '../actions/apiCallStatusActions';
 import * as charactersActions from '../actions/charactersActions';
 import { characters } from '../../services';
 
-const getCharacterId = state => state.details.characterId;
-
-function* handleDetailsLoad() {
+export function* handleDetailsLoad({ payload: characterId  }) {
 	try {
-		const characterId = yield select(getCharacterId);
 		yield put(apiCallStatusActions.beginApiCall());
 		const data = yield call(characters.fetchesCharactersById, characterId);
 		const details = data.results[0];
@@ -22,6 +19,6 @@ function* handleDetailsLoad() {
 	}
 }
 
-export function* watchCharacterDetailsLoad() {
+export default function * () {
 	yield takeLatest(types.DETAILS_CHARACTER.LOAD, handleDetailsLoad);
 }

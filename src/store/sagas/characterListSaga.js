@@ -7,7 +7,7 @@ import { characters } from '../../services';
 
 const getPageCharacter = state => state.characters.nextPage;
 
-function* handleListLoad() {
+export function* handleListLoad() {
 	try {
 		const nextPage = yield select(getPageCharacter);
 		yield put(apiCallStatusActions.beginApiCall());
@@ -21,6 +21,6 @@ function* handleListLoad() {
 	}
 }
 
-export function* watchCharacterListLoad() {
+export default function * () {
 	yield takeLatest(types.LIST_CHARACTERS.LOAD, handleListLoad);
 }
