@@ -24,10 +24,14 @@ export const Header = styled.div`
         font-size: 20px;
         text-decoration: none;
         text-transform: uppercase;
-        color: #000;
+        color: #ccc;
+        background: #00000030;
+        padding: 20px;
+        border: 1px solid #efefef;
+        border-radius: 10px;
         &:hover {
-            text-decoration: underline;
             color: #fff;
+            background: #ffffff30;
         }
       }
   }

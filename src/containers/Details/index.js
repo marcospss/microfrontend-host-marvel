@@ -36,7 +36,7 @@ const Details = ({ match, isLoading, actions, details, series }) => {
               <p>{ description }</p>
               <p>
                 <Link to="/" className="link-action">
-                  Back Home
+                  Voltar para home
                 </Link>
               </p>
           </Header>

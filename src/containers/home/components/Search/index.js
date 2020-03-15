@@ -10,7 +10,7 @@ const Search = ({ triggerSearch, filter }) => {
   return (
     <Form role="search" onSubmit={onSubmit}>
       <Fieldset>
-        <legend>Search Character</legend>
+        <legend>Pesquisar personagem</legend>
         <Input
           onChange={e => triggerSearch(e.currentTarget.value)}
           type="text"

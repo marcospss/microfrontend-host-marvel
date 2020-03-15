@@ -17,12 +17,10 @@ const SeriesGrid = ({ data }) => (
         } = content;
 
         return (
-          <Container>
             <figure key={id}>
               <img src={`${path}.${extension}`} alt={title} />
               <figcaption>{title}</figcaption>
             </figure>
-          </Container>
         );
       })}
     </Grid>

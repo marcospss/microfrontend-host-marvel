@@ -18,6 +18,7 @@ export const Fieldset = styled.fieldset`
   text-align: center;
   legend {
       padding: 0px 20px;
+      text-transform: uppercase;
   }
   border-radius: 10px;
 `;

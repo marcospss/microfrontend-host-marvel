@@ -2,11 +2,14 @@ import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  margin: 20px auto;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  background: #00000045;
 `;
 
 const spin = keyframes`

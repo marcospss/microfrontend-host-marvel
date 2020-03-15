@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import ImageGrid from './components/ImageGrid';
 import Button from './components/Button';
 import Search from './components/Search';
-import { Actions } from './styles';
+import { Container, EmptyResults } from './styles';
 
 import LoaderAnimation from '../../shared/components/LoaderAnimation';
 import * as charactersActions from '../../store/actions/charactersActions';
@@ -35,23 +35,24 @@ const Home = ({ isLoading, characters, actions }) => {
   
   return (
     <>
+        <Search triggerSearch={filterCharacters} filter={filter}/>
       { 
         (results && !!results.length) &&
-        <>
-        <Search triggerSearch={filterCharacters} filter={filter}/>
         <ImageGrid data={results} />
-        </>
       }
-      <Actions>
+      { 
+        (results && !(results.length)) && (filter && !!filter.length) &&
+        <EmptyResults>Sem resultados para o termo.</EmptyResults>
+      }
+      <Container>
         {isLoading && <LoaderAnimation />}
         {
-          results && showButtonLoadMore && (
+          results && showButtonLoadMore && !(filter && filter.length) &&
             <Button handleAction={actions.loadList} loading={isLoading}>
-              Load More
+              Carregue mais
             </Button>
-          )
         }
-      </Actions>
+      </Container>
     </>
   );
 };
