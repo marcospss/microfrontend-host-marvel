@@ -4,7 +4,7 @@ import { Navbar } from './styles';
 
 const Header = () => (
   <Navbar>
-    <Link to="/">
+    <Link to="/" title="Voltar para home">
       <span
         className="icon--svg icon--svg mvl-animated-logo"
         aria-hidden="true"
