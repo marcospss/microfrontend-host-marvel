@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import LoaderAnimation from '../../shared/components/LoaderAnimation';
 import SeriesGrid from './components/SeriesGrid';
+import FormEditCharacter from './components/FormEditCharacter'
 
 import * as charactersActions from '../../store/actions/charactersActions';
 import { Container, Header } from './styles';
@@ -20,30 +21,33 @@ const Details = ({ match, isLoading, actions, details, series }) => {
     const {
         data: { name, description, thumbnail }
       } = details;
-    const { data: { results } } = series;
+    const { data: { results:resultsSeries } } = series;
     return (
         <>
         {isLoading && <LoaderAnimation />}
         <Container>
         {
           !isLoading &&
+          <>
           <Header>
             <h2>{ name }</h2>
               {
                   thumbnail &&
-                  <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={name} width="280" />
+                  <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={name} />
               }
               <p>{ description }</p>
               <p>
-                <Link to="/" className="link-action">
+                <Link to="/" className="link-action" title="Voltar para home">
                   Voltar para home
                 </Link>
               </p>
           </Header>
+          <FormEditCharacter character={details} />
+          </>
         }
         </Container>
           {
-            results && <SeriesGrid data={results} />
+            resultsSeries && <SeriesGrid data={resultsSeries} />
           }
         </>
     )

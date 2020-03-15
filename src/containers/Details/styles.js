@@ -17,16 +17,19 @@ export const Header = styled.div`
     font-size: 26px;
     text-transform: uppercase;
   }
+  img {
+    max-width: 280px;
+  }
   p {
       padding: 20px;
       font-size: 16px;
       a {
-        font-size: 20px;
+        font-size: 16px;
         text-decoration: none;
         text-transform: uppercase;
         color: #ccc;
         background: #00000030;
-        padding: 20px;
+        padding: 10px;
         border: 1px solid #efefef;
         border-radius: 10px;
         &:hover {

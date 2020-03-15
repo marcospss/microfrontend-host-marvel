@@ -9,7 +9,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.h2`
-  font-size: 32px;
+  font-size: 24px;
   margin: 0px;
   width: 100%;
   text-align: center;
