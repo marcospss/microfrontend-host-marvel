@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -9,15 +9,17 @@ import SeriesGrid from './components/SeriesGrid';
 import FormEditCharacter from './components/FormEditCharacter'
 
 import * as charactersActions from '../../store/actions/charactersActions';
-import { Container, Header } from './styles';
+import { Container, Header, Button } from './styles';
 
 const Details = ({ match, isLoading, actions, details, series }) => {
     const { params: { characterId } } = match;
+    const [ displayForm, setDisplayForm ] = useState(false);
     useEffect(() => {
         actions.loadDetails(characterId);
         actions.loadSeries(characterId);
     }, [characterId]);
 
+    const toggleDisplayForm = () => setDisplayForm(!displayForm);
     const {
         data: { name, description, thumbnail }
       } = details;
@@ -30,19 +32,21 @@ const Details = ({ match, isLoading, actions, details, series }) => {
           !isLoading &&
           <>
           <Header>
-            <h2>{ name }</h2>
+          <Link to="/" title="Voltar para home">
+                  Voltar para home
+                </Link>
+            <h2>{ name } </h2>
               {
                   thumbnail &&
                   <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={name} />
               }
               <p>{ description }</p>
-              <p>
-                <Link to="/" className="link-action" title="Voltar para home">
-                  Voltar para home
-                </Link>
-              </p>
+              <p><Button onClick={() => toggleDisplayForm()}>Editar Personagem</Button></p>
           </Header>
-          <FormEditCharacter character={details} />
+          {
+            displayForm &&
+            <FormEditCharacter character={details} toggleDisplayForm={toggleDisplayForm} />
+          }
           </>
         }
         </Container>

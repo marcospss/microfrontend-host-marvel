@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Button as ButtonAction } from './styles';
 
 const Button = ({ children, loading, handleAction }) => (
-    <ButtonAction type="button" disabled={loading} onClick={() => handleAction()}>
+    <ButtonAction disabled={loading} onClick={() => handleAction()}>
         { loading ? 'Loading...' : children }
     </ButtonAction>
 );

@@ -76,7 +76,10 @@ export const TextArea = styled.textarea`
 `;
 
 
-export const Button = styled.button`
+export const Button = styled.button.attrs({
+    type: 'button',
+  })`
+  cursor: pointer;
   width: 50%;
   background: #fff;
   padding: 18px 24px 15px;
@@ -84,4 +87,28 @@ export const Button = styled.button`
   border-radius: 4px;
   display: inline-block;
   font-size: 16px;
+`;
+
+export const Close = styled.button.attrs({
+  type: 'button',
+})`
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 21px;
+  font-weight: bold;
+  border-radius: 70%;
+  padding: 15px 20px;
+`;
+
+export const Message = styled.div`
+  width: 100%;
+  text-align: center;
+  color: ${({ status }) => (status === 'success') ? '#000' : '#721c24'};
+  background-color: ${({ status }) => (status === 'success') ? '#dff8d7' : '#f8d7da'};
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
 `;
