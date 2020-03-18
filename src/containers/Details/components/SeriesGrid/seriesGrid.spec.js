@@ -60,7 +60,13 @@ const data = [
 afterEach(cleanup);
 
 test('loads and displays cards for series', () => {
-    const { findAllByText, findAllByAltText } = render(<SeriesGrid data={data} />);
-    expect(findAllByAltText("3-D Man")).toBeTruthy();
-    expect(findAllByText("3-D Man")).toBeTruthy();
+    const header = 'Series';
+    const nameCharacter = '3-D Man';
+
+    const { findByText, findAllByText, findAllByAltText } = render(
+        <SeriesGrid data={data} />
+    );
+    expect(findByText(header)).toBeTruthy();
+    expect(findAllByAltText(nameCharacter)).toBeTruthy();
+    expect(findAllByText(nameCharacter)).toBeTruthy();
   });
