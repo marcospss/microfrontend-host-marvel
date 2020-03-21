@@ -29,6 +29,13 @@ const FormEditCharacter = ({ character, toggleDisplayForm }) => {
     message: '',
   });
 
+  const setAlertMessage = (status, message) => {
+    setAlert({
+      status,
+      message
+    });
+  }
+
   const onChange = event => {
     const { currentTarget } = event;
     setValue(prevState => {
@@ -44,29 +51,20 @@ const FormEditCharacter = ({ character, toggleDisplayForm }) => {
       const dataLocalStorage = JSON.parse(localStorageMarvelApi);
       const hasValue = dataLocalStorage.find(item => (item.id === characterValues.id));
       if (hasValue && !!Object.keys(hasValue).length) {
-        setAlert({
-          status: 'error',
-          message: 'Personagem já está salvo!'
-        });
+        setAlertMessage('error','Personagem já está salvo!');
         return;
       };
       localStorage.setItem(
         nameDBLocalStorage,
         JSON.stringify([...dataLocalStorage, characterValues])
       );
-      setAlert({
-        status: 'success',
-        message: 'Personagem salvo com sucesso!'
-      });
+      setAlertMessage('success','Personagem salvo com sucesso!');
     } else {
       localStorage.setItem(
         nameDBLocalStorage,
         JSON.stringify([characterValues])
       );
-      setAlert({
-        status: 'success',
-        message: 'Personagem salvo com sucesso!'
-      });
+      setAlertMessage('success','Personagem salvo com sucesso!');
     }
   };
 
