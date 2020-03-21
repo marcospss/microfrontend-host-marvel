@@ -83,6 +83,7 @@ const FormEditCharacter = ({ character, toggleDisplayForm }) => {
             value={characterValues.name}
             onChange={onChange}
             required
+            data-testid="name"
           />
         </Fieldset>
 
@@ -96,10 +97,11 @@ const FormEditCharacter = ({ character, toggleDisplayForm }) => {
               cols="30"
               rows="3"
               required
+              data-testid="description"
             />
           </Fieldset>
         )}
-        <Button onClick={onSubmit}>
+        <Button data-testid="SalvarPersonagem" onClick={onSubmit}>
           Salvar
         </Button>
         {
