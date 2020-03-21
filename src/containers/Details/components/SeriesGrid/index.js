@@ -28,10 +28,6 @@ const SeriesGrid = ({ data }) => (
 );
 
 SeriesGrid.propTypes = {
-  data: []
-};
-
-SeriesGrid.propTypes = {
   data: PropTypes.shape({
     map: PropTypes.func,
     id: PropTypes.number,

@@ -24,13 +24,13 @@ const Search = ({ triggerSearch, filter }) => {
   );
 };
 
-Search.propTypes = {
-  filter: null,
+Search.defaultProps = {
+  filter: '',
 };
 
 Search.propTypes = {
   triggerSearch: PropTypes.func.isRequired,
-  filter: PropTypes.string.isRequired,
+  filter: PropTypes.string,
 };
 
 export default Search;

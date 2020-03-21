@@ -29,12 +29,7 @@ const ImageGrid = ({ data }) => (
 );
 
 ImageGrid.propTypes = {
-  data: [],
-};
-
-ImageGrid.propTypes = {
   data: PropTypes.shape({
-    map: PropTypes.func,
 		id: PropTypes.number,
 		thumbnail: PropTypes.object,
 		name: PropTypes.string,
