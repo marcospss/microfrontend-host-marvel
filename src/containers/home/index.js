@@ -11,17 +11,15 @@ import { Container, EmptyResults } from './styles';
 import LoaderAnimation from '../../shared/components/LoaderAnimation';
 import * as charactersActions from '../../store/actions/charactersActions';
 
-const isFirstLoad = async (characters, actions) => {
-  if (characters.isFirstLoad) {
-    await actions.loadList();
-  }
-};
-
-const Home = ({ isLoading, characters, actions }) => {
-  
+const Home = ({ isLoading, characters, characters: { isFirstLoad }, actions }) => {
   useEffect(() => {
-    isFirstLoad(characters, actions);
-  }, []);
+    async function checkIsFirstLoad() {
+      if (isFirstLoad) {
+        await actions.loadList();
+      }
+    };
+    checkIsFirstLoad();
+  }, [actions, isFirstLoad]);
   
   const {
     data: { offset, total, results, filter }

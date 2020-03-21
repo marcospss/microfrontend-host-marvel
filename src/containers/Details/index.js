@@ -11,13 +11,18 @@ import FormEditCharacter from './components/FormEditCharacter'
 import * as charactersActions from '../../store/actions/charactersActions';
 import { Container, Header, Button } from './styles';
 
+
+
 const Details = ({ match, isLoading, actions, details, series }) => {
     const { params: { characterId } } = match;
     const [ displayForm, setDisplayForm ] = useState(false);
     useEffect(() => {
-        actions.loadDetails(characterId);
-        actions.loadSeries(characterId);
-    }, [characterId]);
+      async function triggerActions() {
+        await actions.loadDetails(characterId);
+        await actions.loadSeries(characterId);
+      };
+      triggerActions();
+    }, [actions, characterId]);
 
     const toggleDisplayForm = () => setDisplayForm(!displayForm);
     const {
@@ -41,7 +46,7 @@ const Details = ({ match, isLoading, actions, details, series }) => {
                   <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={name} />
               }
               <p>{ description }</p>
-              <p><Button onClick={() => toggleDisplayForm()}>Editar Personagem</Button></p>
+              <p><Button data-testid="EditarPersonagem" onClick={() => toggleDisplayForm()}>Editar Personagem</Button></p>
           </Header>
           {
             displayForm &&
