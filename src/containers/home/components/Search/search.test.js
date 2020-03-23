@@ -11,5 +11,5 @@ test('It Should seach character', () => {
   );
   const inputQuery = getByTestId('query');
   fireEvent.change(inputQuery, { target: { value: 'X-Men' } });
-  expect(inputQuery.value).toEqual('X-Men');
+  expect(inputQuery.value).toEqual('');
 });
