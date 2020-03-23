@@ -65,11 +65,11 @@ test('loads and displays cards for character', () => {
     const history = createMemoryHistory();
     const nameCharacter = '3-D Man';
 
-    const { findAllByText, findAllByAltText } = render(
+    const { getByText, getByAltText } = render(
         <Router history={history}>
             <ImageGrid data={data} />
         </Router>
     );
-    expect(findAllByAltText(nameCharacter)).toBeTruthy();
-    expect(findAllByText(nameCharacter)).toBeTruthy();
+    expect(getByAltText(nameCharacter)).toBeTruthy();
+    expect(getByText(nameCharacter)).toBeTruthy();
   });

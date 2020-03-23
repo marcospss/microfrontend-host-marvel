@@ -2,7 +2,6 @@
 /* eslint-disable no-shadow */
 import React from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';

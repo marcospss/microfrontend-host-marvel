@@ -46,7 +46,7 @@ const Home = ({ isLoading, characters, characters: { isFirstLoad }, actions }) =
         {isLoading && <LoaderAnimation />}
         {
           results && showButtonLoadMore && !(filter && filter.length) &&
-            <Button handleAction={actions.loadList} loading={isLoading}>
+            <Button dataTestId="actions-loadList" handleAction={actions.loadList} loading={isLoading}>
               Carregue mais
             </Button>
         }
