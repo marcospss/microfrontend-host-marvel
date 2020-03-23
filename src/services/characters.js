@@ -1,8 +1,8 @@
 import { INSTANCE, PARAMS } from '../settings';
 /**
  * Fetches lists of characters
- * @param int limit 
- * @param int offset 
+ * @param {int} limit 
+ * @param {int} offset 
  */
 const fetchesListsCharacters = async (offset = 0) => {
     try {
@@ -21,7 +21,7 @@ const fetchesListsCharacters = async (offset = 0) => {
 
 /**
  * Fetches a single character by id
- * @param int characterId 
+ * @param {int} characterId 
  */
 const fetchesCharactersById = async (characterId, offset = 0) => {
     try {
@@ -40,7 +40,7 @@ const fetchesCharactersById = async (characterId, offset = 0) => {
 
 /**
  * Fetches lists of series filtered by a character id
- * @param int characterId 
+ * @param {int} characterId 
  */
 const fetchesSeriesCharactersById = async (characterId, offset = 0) => {
     try {
