@@ -18,6 +18,7 @@ const Search = ({ triggerSearch, filter }) => {
           id="query"
           maxLength="30"
           value={filter}
+          data-testid="query"
         />
       </Fieldset>
     </Form>
