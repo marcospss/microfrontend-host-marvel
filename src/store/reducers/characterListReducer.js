@@ -11,14 +11,9 @@ const initialState = {
 };
 
 const charactersReducer = (state = initialState, action) => {
-    
-    const filterResults = (data, query) => {
-        return data.filter(item => {
-            if (item.name.toLowerCase().startsWith(query.toLowerCase())) { 
-              return item;
-            }
-        });
-    }
+    const filterResults = (data, query) => data.filter(
+        item => item.name.toLowerCase().includes(query.toLowerCase())
+        ).map(item => item);
 
     switch (action.type) {
         case types.LIST_CHARACTERS.LOAD:
@@ -42,7 +37,7 @@ const charactersReducer = (state = initialState, action) => {
                 data: {
                     ...state.data,
                     filter: action.payload,
-                    results: (action.payload.toLowerCase() === '') ? state.resultsRaw : filterResults(state.data.results, action.payload),
+                    results: (action.payload.toLowerCase() === '') ? state.resultsRaw : filterResults([...state.data.results], action.payload),
                 }
             };
         case types.LIST_CHARACTERS.LOAD_FAIL:
