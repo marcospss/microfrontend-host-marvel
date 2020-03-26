@@ -3,15 +3,15 @@ import { runSaga } from 'redux-saga';
 import * as apiCallStatusActions from '../actions/apiCallStatusActions';
 import * as charactersActions from '../actions/charactersActions';
 import { characters } from '../../services';
-import { handleDetailsLoad } from './characterDetailsSaga';
+import { handleListLoad } from './characterListSaga';
 
-describe("Fetch Details character saga",()=>{
+describe("Fetches Lists of characters saga",()=>{
     // https://redux-saga.js.org/docs/advanced/Testing.html
     it('should call api and dispatch success action', async () => {
-      const mockDetails = { 
+      const mockList = { 
         results: [
           {
-            id: 1011334,
+            id: 10,
             name: '3-D Man',
             description: '',
             modified: '2014-04-29T14:18:17-0400',
@@ -22,43 +22,43 @@ describe("Fetch Details character saga",()=>{
           }
         ]
        };
-      const fetchesCharactersById = jest.spyOn(characters, 'fetchesCharactersById')
-        .mockImplementation(() => Promise.resolve(mockDetails));
+      const fetchesListsCharacters = jest.spyOn(characters, 'fetchesListsCharacters')
+        .mockImplementation(() => Promise.resolve(mockList));
       const dispatched = [];
       const saga = await runSaga({
         dispatch: (action) => dispatched.push(action),
-        getState: () => ({ details: {
-          characterId: 1011334
+        getState: () => ({ characters: {
+          nextPage: 10
         } }),
-      }, handleDetailsLoad);
-      expect(fetchesCharactersById).toHaveBeenCalledTimes(1);
+      }, handleListLoad);
+      expect(fetchesListsCharacters).toHaveBeenCalledTimes(1);
       expect(dispatched).toEqual([
         apiCallStatusActions.beginApiCall(),
-        charactersActions.setDetails(mockDetails.results[0]),
+        charactersActions.setList(mockList),
       ]);
-      fetchesCharactersById.mockClear();
+      fetchesListsCharacters.mockClear();
     });
 
     it('should call api and dispatch error action', async () => {
       const error = { 
         message: ''
        };
-      const fetchesCharactersById = jest.spyOn(characters, 'fetchesCharactersById')
+      const fetchesListsCharacters = jest.spyOn(characters, 'fetchesListsCharacters')
         .mockImplementation(() => Promise.reject(error));
       const dispatched = [];
       const saga = await runSaga({
         dispatch: (action) => dispatched.push(action),
-        getState: () => ({ details: {
-          characterId: 1011334
+        getState: () => ({ characters: {
+          nextPage: 1011334
         } }),
-      }, handleDetailsLoad);
-      expect(fetchesCharactersById).toHaveBeenCalledTimes(1);
+      }, handleListLoad);
+      expect(fetchesListsCharacters).toHaveBeenCalledTimes(1);
       expect(dispatched).toEqual([
         apiCallStatusActions.beginApiCall(),
         apiCallStatusActions.apiCallError(),
-        charactersActions.setDetailsError(error),
+        charactersActions.setListError(error),
       ]);
-      fetchesCharactersById.mockClear();
+      fetchesListsCharacters.mockClear();
     });
     
 });
