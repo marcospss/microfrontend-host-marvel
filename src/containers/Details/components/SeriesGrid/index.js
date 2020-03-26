@@ -27,13 +27,18 @@ const SeriesGrid = ({ data }) => (
   </Container>
 );
 
+SeriesGrid.defaultProps = {
+  data: [],
+}
+
 SeriesGrid.propTypes = {
-  data: PropTypes.shape({
-    map: PropTypes.func,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
     id: PropTypes.number,
     thumbnail: PropTypes.object,
-    name: PropTypes.string
-  }).isRequired
+    name: PropTypes.string,
+    })
+  )
 };
 
 export default SeriesGrid;
