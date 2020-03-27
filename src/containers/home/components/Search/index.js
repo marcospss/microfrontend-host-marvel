@@ -34,4 +34,4 @@ Search.propTypes = {
   filter: PropTypes.string,
 };
 
-export default Search;
+export default React.memo(Search);

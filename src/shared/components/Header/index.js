@@ -26,4 +26,4 @@ const Header = () => (
   </Navbar>
 );
 
-export default Header;
+export default React.memo(Header);

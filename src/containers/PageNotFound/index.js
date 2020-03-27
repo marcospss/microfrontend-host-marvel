@@ -9,4 +9,4 @@ const PageNotFound = () => (
     </Container>
 );
 
-export default PageNotFound;
+export default React.memo(PageNotFound);

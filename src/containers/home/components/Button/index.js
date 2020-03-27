@@ -21,4 +21,4 @@ Button.propTypes = {
 	handleAction: PropTypes.func.isRequired,
 };
 
-export default Button;
+export default React.memo(Button);

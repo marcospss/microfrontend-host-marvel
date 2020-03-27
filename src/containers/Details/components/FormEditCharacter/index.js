@@ -128,4 +128,4 @@ FormEditCharacter.propTypes = {
   toggleDisplayForm: PropTypes.func.isRequired,
 };
 
-export default FormEditCharacter;
+export default React.memo(FormEditCharacter);

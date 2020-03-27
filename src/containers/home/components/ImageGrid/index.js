@@ -44,4 +44,4 @@ ImageGrid.propTypes = {
   )
 };
 
-export default ImageGrid;
+export default React.memo(ImageGrid);

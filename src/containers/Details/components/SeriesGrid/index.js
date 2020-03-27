@@ -41,4 +41,4 @@ SeriesGrid.propTypes = {
   )
 };
 
-export default SeriesGrid;
+export default React.memo(SeriesGrid);

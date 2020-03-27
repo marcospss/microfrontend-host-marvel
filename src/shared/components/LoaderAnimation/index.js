@@ -8,4 +8,4 @@ const LoaderAnimation = () => (
     </Container>
 );
 
-export default LoaderAnimation;
+export default React.memo(LoaderAnimation);
