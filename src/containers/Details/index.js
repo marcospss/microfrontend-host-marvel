@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -24,7 +24,7 @@ const Details = ({ match, isLoading, actions, details, series }) => {
       triggerActions();
     }, [actions, characterId]);
 
-    const toggleDisplayForm = () => setDisplayForm(!displayForm);
+    const toggleDisplayForm = useCallback(() => setDisplayForm(!displayForm), [displayForm]);
     const {
         data: { name, description, thumbnail }
       } = details;
