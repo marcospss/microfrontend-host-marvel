@@ -4,4 +4,13 @@ import './styles.css';
 
 import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+window.renderMarvel = (containerId, history) => {
+  ReactDOM.render(
+    <App history={history} />,
+    document.getElementById(containerId),
+  );
+};
+
+window.unmountMarvel = containerId => {
+  ReactDOM.unmountComponentAtNode(document.getElementById(containerId));
+};

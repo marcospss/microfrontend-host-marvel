@@ -6,10 +6,9 @@ export const Form = styled.form`
   align-items: center;
   flex-flow: column;
   width: 100%;
-  position: fixed;
+  position: relative;
   padding: 20px;
   background-color: #ccc;
-  top: 78px;
 `;
 
 export const Fieldset = styled.fieldset`
