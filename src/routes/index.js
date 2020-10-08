@@ -6,7 +6,7 @@ import Details from '../containers/Details';
 import PageNotFound from '../containers/PageNotFound';
 
 const Routes = () => (
-  <BrowserRouter>
+  <BrowserRouter basename="marvel">
     <Switch>
       <Route exact path='/' component={Home} />
       <Route path='/details/:characterId' component={Details} />
