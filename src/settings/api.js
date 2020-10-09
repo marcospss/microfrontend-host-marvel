@@ -4,8 +4,8 @@ const dateCurrent = new Date();
 
 const API = {
     apiEndpoint: 'https://gateway.marvel.com:443/v1/public',
-    apikeyPublic: 'fc88e56fcb674d36991ba76c85d9df23',
-    apikeyPrivate: '81d69ec0e17ce9c3e4bce897086b50f769ef7ee5',
+    apikeyPublic: process.env.REACT_APP_API_KEY_PUBLIC,
+    apikeyPrivate: process.env.REACT_APP_API_KEY_PRIVATE,
 };
 
 const PARAMS = {
